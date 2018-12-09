@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/contactmgmt.web/contactmgmt.web.csproj"
+                "${workspaceFolder}/Web/Web.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

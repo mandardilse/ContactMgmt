@@ -1,8 +1,0 @@
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\bin\Debug\netstandard2.0\contactmgmt.entities.deps.json
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\bin\Debug\netstandard2.0\contactmgmt.entities.dll
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\bin\Debug\netstandard2.0\contactmgmt.entities.pdb
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\obj\Debug\netstandard2.0\contactmgmt.entities.csproj.CoreCompileInputs.cache
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\obj\Debug\netstandard2.0\contactmgmt.entities.AssemblyInfoInputs.cache
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\obj\Debug\netstandard2.0\contactmgmt.entities.AssemblyInfo.cs
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\obj\Debug\netstandard2.0\contactmgmt.entities.dll
-C:\Users\mandar.kumbre\Projects\NETCORE\ContactMgmt\contactmgmt.entities\obj\Debug\netstandard2.0\contactmgmt.entities.pdb
