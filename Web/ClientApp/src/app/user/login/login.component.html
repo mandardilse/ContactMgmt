@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">User Login</h5>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="onLogin(f)">
+            <div class="form-group">
+              <label for="emailId">Email Address</label>
+              <input type="email" name="emailId" ngModel #emailId="ngModel" required minlength="3" maxlength="254" id="emailId"
+                email class="form-control">
+              <div class="alert alert-danger" *ngIf="!emailId.valid && emailId.touched" role="alert">
+                <span *ngIf="emailId.errors?.email">Invalid Email Address</span>
+                <span *ngIf="emailId.errors?.required">Email Address required!</span>
+                <span *ngIf="emailId.errors?.minlength">Should be more than {{emailId.errors.minlength.requiredLength}}</span>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="txtPassword">Password</label>
+              <input type="password" id="txtPassword" name="password" ngModel #password="ngModel" minlength="6"
+                maxlength="254" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="!password.valid && password.touched" role="alert">
+                <span *ngIf="password.errors?.required">Password required!</span>
+                <span *ngIf="password.errors?.minlength">Should be more than
+                  {{password.errors.minlength.requiredLength}}</span>
+              </div>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" id="rememberMe" class="form-check-input">
+              <label class="form-check-label" for="rememberMe"></label>
+            </div>
+            <div class="form-group">
+              <button type="submit" [disabled]="!f.valid" class="btn btn-outline-success">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="reset" class="btn btn-outline-secondary" routerLink="/">cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
