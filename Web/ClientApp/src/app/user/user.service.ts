@@ -8,6 +8,7 @@ import { UserRegistration } from './models/user-registration';
 export class UserService {
   constructor(private http: HttpClient) { }
   registerUser(userInfo: UserRegistration) {
-    return this.http.post(location.origin + '/api/account/register', userInfo);
+    console.log(userInfo)
+    //return this.http.post(location.origin + '/api/account/register', userInfo);
   }
 }
