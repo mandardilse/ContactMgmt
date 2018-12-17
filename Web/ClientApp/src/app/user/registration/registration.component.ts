@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserRegistration } from '../models/user-registration';
 import { UserService } from '../user.service';
+import { Store, select } from '@ngrx/store';
+import { UserState, getRegisterState } from '../store/user.state';
+import { UserRegisterAction } from '../store/user.action';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -9,7 +12,7 @@ import { UserService } from '../user.service';
 })
 export class RegistrationComponent implements OnInit {
   signUpForm: FormGroup
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private store: Store<UserState>) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({
@@ -20,6 +23,7 @@ export class RegistrationComponent implements OnInit {
       'dateOfBirth': new FormControl(null, []),
       'contact': new FormControl(null, [])
     })
+    this.store.pipe(select(getRegisterState)).subscribe(x => console.log(x))
   }
 
   onRegister() {
@@ -31,6 +35,8 @@ export class RegistrationComponent implements OnInit {
       dateOfBirth: this.signUpForm.controls.dateOfBirth.value,
       contact: this.signUpForm.controls.contact.value
     }
-    this.userService.registerUser(userInfo);
+    this.store.dispatch(new UserRegisterAction(userInfo));
+    //this.store.dispatch({ type: 'user.register', payload: userInfo });
+    //this.userService.registerUser(userInfo);
   }
 }
