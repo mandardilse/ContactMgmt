@@ -7,12 +7,12 @@ const initialState: UserState = {
 }
 export function UserReducer(state = initialState, action: UserActions): UserState {
 	switch (action.type) {
-		case UserActionType.UserLogin:
+		case UserActionType.UserLoginSuccess:
 			return {
 				...state,
 				loginInfo: action.payload
 			}
-		case 'user.register':
+		case UserActionType.UserRegister:
 			return {
 				...state,
 				regiterInfo: action.payload
