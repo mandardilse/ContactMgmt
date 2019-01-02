@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Web.Helper;
 using Web.Models.Db;
@@ -26,7 +27,7 @@ namespace Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<string> Register([FromBody] UserRegistration userInfo)
+		public async Task<IActionResult> Register([FromBody] UserRegistration userInfo)
 		{
 			var user = new ApplicationUser
 			{
@@ -41,21 +42,33 @@ namespace Web.Controllers
 			if (result.Succeeded)
 			{
 				await _signInManager.SignInAsync(user, false);
-				return JwtTokenHelper.GenerateToken(user.Email, user, _configuration);
+				return Ok(JwtTokenHelper.GenerateToken(user.Email, user, _configuration));
 			}
-			throw new ApplicationException("Registration Failed!");
+			return StatusCode(500, "Registration Failed!");
 		}
 
 		[HttpPost]
-		public async Task<string> Login([FromBody] UserLogin userInfo)
+		public async Task<IActionResult> LoginAsync([FromBody] UserLogin userInfo)
 		{
 			var result = await _signInManager.PasswordSignInAsync(userInfo.EmailId, userInfo.Password, false, false);
 			if (result.Succeeded)
 			{
 				var appUser = _userManager.Users.SingleOrDefault(u => u.Email == userInfo.EmailId);
-				return JwtTokenHelper.GenerateToken(appUser.Email, appUser, _configuration);
+				if (appUser != null)
+					return NotFound(userInfo);
+				return Ok(JwtTokenHelper.GenerateToken(appUser.Email, appUser, _configuration));
 			}
-			throw new ApplicationException("Login Failed!");
+			return StatusCode(500, "Login Failed!");
+		}
+
+		//TODO: This method would be protected. Hence Authorized attribute would be added.
+		[HttpGet]
+		public async Task<IActionResult> UserList()
+		{
+			var result = await _userManager.Users.ToListAsync();
+			if (result == null)
+				return NotFound();
+			return Ok(result);
 		}
 
 	}

@@ -4,7 +4,7 @@ import { UserRegistration } from '../models/user-registration';
 import { UserService } from '../user.service';
 import { Store, select } from '@ngrx/store';
 import { UserState, getRegisterState } from '../store/user.state';
-import { UserRegisterAction } from '../store/user.action';
+import { UserRegisterAction } from '../store';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',

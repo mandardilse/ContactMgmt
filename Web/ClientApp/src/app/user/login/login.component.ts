@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { UserLogin } from '../models/user-login';
-import { getLoginState, UserState } from '../store/user.state';
-import { UserLoginAction } from '../store/user.action';
+import { UserState, getLoginState, UserLoginAction } from '../store';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +22,5 @@ export class LoginComponent implements OnInit {
       password: form.form.controls.password.value
     }
     this.store.dispatch(new UserLoginAction(userInfo));
-    //this.store.dispatch({ type: 'user.login', payload: userInfo });
   }
 }

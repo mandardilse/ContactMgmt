@@ -1,5 +1,5 @@
 import { UserState } from "./user.state";
-import { UserActions, UserActionType } from "./user.action";
+import { UserActions, UserActionType } from "./user.actions";
 
 const initialState: UserState = {
 	loginInfo: null,
