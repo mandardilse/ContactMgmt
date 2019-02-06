@@ -1,10 +1,10 @@
-import { UserLogin } from "../models/user-login";
 import { UserRegistration } from "../models/user-registration";
 import * as forRoot from '../../store/app.state';
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { LoginInfo } from "../models/login-info";
 
 export interface UserState extends forRoot.AppState {
-	loginInfo: UserLogin,
+	loginInfo: LoginInfo,
 	regiterInfo: UserRegistration
 }
 

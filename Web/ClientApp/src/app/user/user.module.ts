@@ -9,16 +9,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserReducer } from './store/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffectService } from './store';
+import { UserComponent } from './user.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrationComponent],
+  declarations: [LoginComponent, UserComponent, RegistrationComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('users', UserReducer),
-    EffectsModule.forFeature([])
+    EffectsModule.forFeature([UserEffectService])
   ]
 })
 export class UserModule { }

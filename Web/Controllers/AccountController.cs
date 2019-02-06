@@ -54,9 +54,10 @@ namespace Web.Controllers
 			if (result.Succeeded)
 			{
 				var appUser = _userManager.Users.SingleOrDefault(u => u.Email == userInfo.EmailId);
-				if (appUser != null)
+				if (appUser == null)
 					return NotFound(userInfo);
-				return Ok(JwtTokenHelper.GenerateToken(appUser.Email, appUser, _configuration));
+				var token = JwtTokenHelper.GenerateToken(appUser.Email, appUser, _configuration);
+				return Ok(token);
 			}
 			return StatusCode(500, "Login Failed!");
 		}

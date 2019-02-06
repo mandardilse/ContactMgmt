@@ -14,13 +14,14 @@ export class LoginComponent implements OnInit {
   constructor(private store: Store<UserState>) { }
 
   ngOnInit() {
-    this.store.pipe(select(getLoginState)).subscribe(x => console.log(x));
+    //this.store.pipe(select(getLoginState)).subscribe(x => console.log(x));
   }
-  onLogin(form: NgForm) {
+  onLogin(loginForm: NgForm) {
     let userInfo: UserLogin = {
-      emailId: form.form.controls.emailId.value,
-      password: form.form.controls.password.value
+      emailId: loginForm.form.controls.emailId.value,
+      password: loginForm.form.controls.password.value
     }
-    this.store.dispatch(new UserLoginAction(userInfo));
+    let userAction = new UserLoginAction(userInfo);
+    this.store.dispatch(userAction);
   }
 }

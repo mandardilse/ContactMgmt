@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Web.Models.Db;
 
+[assembly: ApiController]
 namespace Web
 {
 	public class Startup
@@ -105,6 +106,7 @@ namespace Web
 				if (env.IsDevelopment())
 				{
 					spa.UseAngularCliServer(npmScript: "start");
+					//spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
 				}
 			});
 
